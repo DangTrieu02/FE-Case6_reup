@@ -2,9 +2,12 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ChangePasswordModal from "../page/user/change-password";
+import {useNavigate} from "react-router-dom";
 
 
 export default function Navbar() {
+    const navigate = useNavigate() ;
+
     return (
         <div>
             <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -95,7 +98,39 @@ export default function Navbar() {
                     >
                         <i className="bi bi-search"></i>
                     </button>
-                    <ChangePasswordModal />
+
+                        {/*<ChangePasswordModal></ChangePasswordModal>*/}
+
+                    <div className="nav-item dropdown">
+                         <a
+                             className="nav-link dropdown-toggle"
+                             href="#"
+                             id="navbarDropdown"
+                             role="button"
+                             data-bs-toggle="dropdown"
+                             aria-haspopup="true"
+                             aria-expanded="false"
+                         >
+                            Info
+                        </a>
+                        <div className="dropdown-menu">
+                            <a className="dropdown-item" href="property-single.html">
+                                profile
+                            </a>
+                             <ChangePasswordModal></ChangePasswordModal>
+
+                            <a className="dropdown-item" href="" onClick={()=>{
+                                localStorage.removeItem("access_token");
+                                localStorage.clear()
+                                navigate("/")
+                            }}>
+                                Log out
+                            </a>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </nav>
         </div>

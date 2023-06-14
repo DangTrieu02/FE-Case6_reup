@@ -43,9 +43,9 @@ export default function ChangePasswordModal() {
 
     return (
         <div>
-            <button type="button" className="btn btn-b-n ml-2" onClick={handleShow}>
+            <a className="dropdown-item" onClick={handleShow}>
                 Change Password
-            </button>
+            </a>
 
             <Modal show={showModal} onHide={handleClose}>
                 <Modal.Header closeButton>
