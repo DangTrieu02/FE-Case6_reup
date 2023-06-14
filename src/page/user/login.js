@@ -27,17 +27,25 @@ export default function Login() {
     const navigate = useNavigate()
     const handleLogin = async (values) => {
         await dispatch(login(values)).then((e) => {
-            if (e.payload !== "User not found" && e.payload !== "Wrong password") {
+            if (e.payload && e.payload.role) {
                 const { role } = e.payload;
                 if (role === "owner") {
                     navigate("/owner");
                 } else {
                     navigate("/home");
                 }
-            } else if (e.payload === "User not found") {
-                swal("User not found");
-            } else if (e.payload === "Wrong password") {
-                swal("Wrong password");
+            } else if (e.payload === "user not found") {
+                swal({
+                    title: "User not found!",
+                    icon: "error",
+                    buttons:"close",
+                });
+            } else if (e.payload === "wrong password") {
+                swal({
+                    title: "Wrong password!",
+                    icon: "error",
+                    buttons:"close",
+                });
             }
         });
     };
