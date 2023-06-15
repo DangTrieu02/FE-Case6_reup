@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import {Link, NavLink, useNavigate} from 'react-router-dom';
 import ChangePasswordModal from "../page/user/change-password";
+<<<<<<< HEAD
 import {Modal} from "react-bootstrap";
 import ProfileModal from "../page/user/profileModal";
 
@@ -18,6 +19,14 @@ export default function Navbar() {
 
         navigate('/login')
     }
+=======
+import {useNavigate} from "react-router-dom";
+
+
+export default function Navbar() {
+    const navigate = useNavigate() ;
+
+>>>>>>> fec00ca75dff1cbeec5016a7057c164532b75c73
     return (
         <div>
             <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -137,7 +146,32 @@ export default function Navbar() {
                         </li>
                     </ul>
                     <ChangePasswordModal/>
-                    <editProfileModal />
+                    <div className="nav-item dropdown">
+                         <a
+                             className="nav-link dropdown-toggle"
+                             href="#"
+                             id="navbarDropdown"
+                             role="button"
+                             data-bs-toggle="dropdown"
+                             aria-haspopup="true"
+                             aria-expanded="false"
+                         >
+                            Info
+                        </a>
+                        <div className="dropdown-menu">
+                            <a className="dropdown-item" href="property-single.html">
+                                profile
+                            </a>
+                             <ChangePasswordModal></ChangePasswordModal>
+                            <a className="dropdown-item" href="" onClick={()=>{
+                                localStorage.removeItem("access_token");
+                                localStorage.clear()
+                                navigate("/")
+                            }}>
+                                Log out
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </nav>
         </div>

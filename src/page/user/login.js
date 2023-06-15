@@ -115,6 +115,22 @@ export default function Login() {
                                             <div className="w-50 text-md-right">
                                                 <a href="#" style={{color: '#fff'}}>Forgot Password</a>
                                             </div>
+                                            {/*<GoogleLogin*/}
+                                            {/*    clientId='884724746848-412afcr1b3pg39o206pj5rlha8driq78.apps.googleusercontent.com'*/}
+                                            {/*    onSuccess={async (res) => {*/}
+                                            {/*        loginGoogle(res)*/}
+                                            {/*    }}*/}
+                                            {/*    onError={(err) => console.log(err)}*/}
+                                            {/*    containerClass="<your_custom_class>"*/}
+                                            {/*>*/}
+                                            {/*</GoogleLogin>*/}
+                                        </div>
+                                    </Form>
+                                    </Formik>
+
+                                    <p className="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
+                                    <div className="social d-flex text-center">
+                                        <a href="#" className="px-2 py-2 mr-md-1 rounded">
                                             <GoogleLogin
                                                 clientId='884724746848-412afcr1b3pg39o206pj5rlha8driq78.apps.googleusercontent.com'
                                                 onSuccess={async (res) => {
@@ -122,17 +138,10 @@ export default function Login() {
                                                 }}
                                                 onError={(err) => console.log(err)}
                                                 containerClass="<your_custom_class>"
-                                            >
-                                                <button>Google Login</button>
+                                            > Google Login
                                             </GoogleLogin>
-                                        </div>
-                                    </Form>
-                                    </Formik>
-
-                                    <p className="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
-                                    <div className="social d-flex text-center">
-                                        <a href="#" className="px-2 py-2 mr-md-1 rounded"><span className="ion-logo-facebook mr-2"></span> Facebook</a>
-                                        <a href="/register" className="px-2 py-2 ml-md-1 rounded"><span className="ion-logo-twitter mr-2"></span>register</a>
+                                           </a>
+                                        <a href="/register" className="px-2 py-2 ml-md-1 rounded">register</a>
                                     </div>
                                 </div>
                             </div>
