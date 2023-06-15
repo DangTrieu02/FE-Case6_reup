@@ -115,16 +115,18 @@ export default function Navbar() {
                         </a>
                         <div className="dropdown-menu">
                             <a className="dropdown-item" href="property-single.html">
-                                profile
+                                <i className="fa-regular fa-address-card fa-shake" style={{color: '#0ad62c'}}></i>   profile
                             </a>
                              <ChangePasswordModal></ChangePasswordModal>
 
-                            <a className="dropdown-item" href="" onClick={()=>{
+                            <a className="dropdown-item" href=""
+
+                               onClick={()=>{
                                 localStorage.removeItem("access_token");
                                 localStorage.clear()
                                 navigate("/")
                             }}>
-                                Log out
+                                <i className="fa-solid fa-person-walking-dashed-line-arrow-right fa-fade" style={{color: '#0ad62c'}}></i> Log out
                             </a>
                         </div>
                     </div>
