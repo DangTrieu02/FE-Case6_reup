@@ -1,3 +1,4 @@
+// front-end/login.js
 import { login, loginWithGoogle } from "../../service/userService";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
@@ -134,7 +135,7 @@ export default function Login() {
                                             <GoogleLogin
                                                 clientId='884724746848-412afcr1b3pg39o206pj5rlha8driq78.apps.googleusercontent.com'
                                                 onSuccess={async (res) => {
-                                                    loginGoogle(res)
+                                                    await loginGoogle(res)
                                                 }}
                                                 onError={(err) => console.log(err)}
                                                 containerClass="<your_custom_class>"
