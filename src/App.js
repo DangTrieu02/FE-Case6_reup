@@ -4,9 +4,7 @@ import Main from "./page/main";
 import Login from "./page/user/login";
 import ChangePassword from "./page/user/change-password";
 import HomeOwner from "./page/owner/homeOwner";
-
 import Register from "./page/user/register";
-import EditProfile from "./page/editProfile";
 import { useSelector } from "react-redux";
 function App() {
 

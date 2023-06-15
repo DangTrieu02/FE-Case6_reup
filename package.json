@@ -9,15 +9,18 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "formik": "^2.4.1",
+    "fs": "^0.0.1-security",
     "google-login-react": "^0.2.17",
     "mdb-react-ui-kit": "^6.1.0",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-redux": "^8.0.7",
     "react-router-dom": "^6.12.1",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
+    "stream": "^0.0.2",
     "sweetalert": "^2.1.2",
     "sweetalert2": "^11.7.12",
     "web-vitals": "^2.1.4",
@@ -46,5 +49,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.8",
+    "postcss": "^7.0.39",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }

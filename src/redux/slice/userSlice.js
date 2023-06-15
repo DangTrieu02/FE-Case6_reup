@@ -1,9 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {login, loginWithGoogle} from "../../service/userService";
+import {getProfile, login, loginWithGoogle} from "../../service/userService";
 
 const initialState ={
     currentUser:JSON.parse(localStorage.getItem("user")),
-    user:[]
+    user:[],
+
 }
 const userSlice = createSlice({
     name: "user",
@@ -22,4 +23,6 @@ const userSlice = createSlice({
         })
     }
 })
+;
 export default userSlice.reducer
+

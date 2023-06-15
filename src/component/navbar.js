@@ -1,10 +1,23 @@
 // Navbar.js
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, {useState} from 'react';
+import {Link, NavLink, useNavigate} from 'react-router-dom';
 import ChangePasswordModal from "../page/user/change-password";
-
+import {Modal} from "react-bootstrap";
+import ProfileModal from "../page/user/profileModal";
 
 export default function Navbar() {
+    const [openModal, setOpenModal] = useState(false);
+    const [repositories, setRepositories] = useState()
+    const navigate = useNavigate();
+
+    const user = localStorage.getItem("user");
+    const parsedUser = JSON.parse(user);
+    const handleLogout = () => {
+        localStorage.removeItem('access-token');
+        localStorage.removeItem('user');
+
+        navigate('/login')
+    }
     return (
         <div>
             <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -95,7 +108,36 @@ export default function Navbar() {
                     >
                         <i className="bi bi-search"></i>
                     </button>
-                    <ChangePasswordModal />
+                    <ul className="navbar-nav">
+                        <li className="nav-item dropdown">
+                            <a className="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                               id="navbarDropdownMenuLink"
+                               role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                <div><img src= "https://static-images.vnncdn.net/files/publish/2022/9/3/bien-vo-cuc-thai-binh-346.jpeg"
+                                          className="rounded-circle"
+                                          height="40" width="40" style={{objectFit:"cover"}} alt="Avatar"/></div>
+                            </a>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <div>
+                                        <Modal
+                                            open={openModal}
+                                            onClose={() => setOpenModal(false)}/>
+
+                                        <ProfileModal/>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a className="dropdown-item" href="#">Settings</a>
+                                </li>
+                                <li>
+                                    <a className="dropdown-item" href="#" onClick={handleLogout}>Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ChangePasswordModal/>
+                    <editProfileModal />
                 </div>
             </nav>
         </div>
