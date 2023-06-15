@@ -164,7 +164,7 @@ export default function Navbar() {
                             </a>
                              <ChangePasswordModal></ChangePasswordModal>
                             <a className="dropdown-item" href="" onClick={()=>{
-                                localStorage.removeItem("access_token");
+                                localStorage.removeItem("access-token");
                                 localStorage.clear()
                                 navigate("/")
                             }}>
