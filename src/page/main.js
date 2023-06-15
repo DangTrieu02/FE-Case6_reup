@@ -1,8 +1,12 @@
 import React from 'react'
+import Search from "./search";
+import Intro from "./intro";
 
 export default function Main() {
   return (
    <>
+     <Search/>
+     <Intro/>
     <main id="main" style={{backgroundColor:"white"}}>
 
 

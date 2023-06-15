@@ -9,8 +9,7 @@ export default function HomePage() {
     return (
         <>
         <Navbar/>
-        <Search/>
-        <Intro/>
+
         <Outlet/>
         </>
     )

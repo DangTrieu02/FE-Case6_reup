@@ -115,15 +115,7 @@ export default function Login() {
                                             <div className="w-50 text-md-right">
                                                 <a href="#" style={{color: '#fbceb5'}}>Forgot Password</a>
                                             </div>
-                                            {/*<GoogleLogin*/}
-                                            {/*    clientId='884724746848-412afcr1b3pg39o206pj5rlha8driq78.apps.googleusercontent.com'*/}
-                                            {/*    onSuccess={async (res) => {*/}
-                                            {/*        loginGoogle(res)*/}
-                                            {/*    }}*/}
-                                            {/*    onError={(err) => console.log(err)}*/}
-                                            {/*    containerClass="<your_custom_class>"*/}
-                                            {/*>*/}
-                                            {/*</GoogleLogin>*/}
+
                                         </div>
                                     </Form>
                                     </Formik>

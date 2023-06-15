@@ -3,13 +3,21 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ChangePasswordModal from "../page/user/change-password";
 import {useNavigate} from "react-router-dom";
-
-
+import {useSelector} from "react-redux";
+import ProfileModal from "../page/user/info";
+import {useState} from 'react';
+import {Modal} from "react-bootstrap"
 export default function Navbar() {
+
+
     const navigate = useNavigate() ;
+    const user = useSelector((users)=> users.user.currentUser)
+    const [openModal, setOpenModal] = useState(false);
+    const [repositories, setRepositories] = useState()
 
     return (
         <div>
+            {console.log(user)}
             <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
                 <div className="container">
                     <button
@@ -111,16 +119,25 @@ export default function Navbar() {
                              aria-haspopup="true"
                              aria-expanded="false"
                          >
-                            Info
+                             {user.fullName}
+                            <img src= {user.avatar}
+                                       className="rounded-circle"
+                                       height="40" width="40" style={{objectFit:"cover"}} alt="Avatar"/>
                         </a>
                         <div className="dropdown-menu">
-                            <a className="dropdown-item" href="property-single.html">
-                                profile
+                            <a className="dropdown-item">
+                                <li>
+                                    <div>
+                                        <Modal
+                                            open={openModal}
+                                            onClose={() => setOpenModal(false)}/>
+                                        <ProfileModal/>
+                                    </div>
+                                </li>
                             </a>
                              <ChangePasswordModal></ChangePasswordModal>
 
                             <a className="dropdown-item" href="" onClick={()=>{
-                                localStorage.removeItem("access_token");
                                 localStorage.clear()
                                 navigate("/")
                             }}>
