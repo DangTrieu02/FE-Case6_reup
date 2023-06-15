@@ -11,27 +11,27 @@ import axios from 'axios';
 
 const validateSchema = Yup.object().shape({
     username: Yup.string()
-        .min(6, "Too Short")
-        .max(32, "Too Long")
-        .matches(/^[a-zA-Z0-9]+$/, 'tên tài khoản không được chứa ký tự đặc biệt và dấu cách.')
+        .min(6, "Needs to be between 6 and 12 characters long")
+        .max(32, "Needs to be between 6 and 12 characters long")
+        .matches(/^[a-zA-Z0-9]+$/, "Accounts can't contain special characters and spaces.")
         .required("required"),
     password: Yup.string()
-        .min(6, "Too Short")
-        .max(32, "Too Long")
-        .matches(/^[a-zA-Z0-9]+$/, 'Mật khẩu không được chứa ký tự đặc biệt và dấu cách.')
+        .min(6, "Needs to be between 6 and 32 characters long")
+        .max(32, "Needs to be between 6 and 32 characters long")
+        .matches(/^[a-zA-Z0-9]+$/, "Password can't contain special characters and spaces.")
         .required("required"),
     confirmPassword: Yup.string()
-        .min(4, "Too Short")
-        .max(32, "Too Long")
-        .oneOf([Yup.ref('password')], 'Mật khẩu không khớp.')
+        .min(6, "Needs to be between 6 and 32 characters long")
+        .max(32, "Needs to be between 6 and 32 characters long")
+        .oneOf([Yup.ref('password')], "confirmPassword don't match.")
         .required("required"),
     fullName: Yup.string()
-        .min(4, "Too Short")
-        .max(32, "Too Long")
+        .min(4, "Needs to be between 4 and 32 characters long")
+        .max(32, "Needs to be between 4 and 32 characters long")
         .required("required"),
     phoneNumber: Yup.string()
-        .min(9, "Too Short")
-        .max(12, "Too Long")
+        .min(9, "Needs to be between 9 and 12 characters long")
+        .max(12, "Needs to be between 9 and 12 characters long")
         .required("required"),
 })
 
@@ -41,14 +41,14 @@ function Register() {
         axios.post('http://localhost:3001/users/register', values).then((response) => {
             if (response.status == 209) {
                 swal({
-                    title: "error",
+                    title: "Register error",
                     text: response.data.message,
                     icon: "error",
                     button: "Close",
                 });
             } else {
                 swal({
-                    title: "success",
+                    title: "Register success",
                     text: response.data.message,
                     icon: "success",
                     button: "Close",
@@ -81,7 +81,7 @@ function Register() {
                                             password: "",
                                             confirmPassword: "",
                                             fullName: "",
-                                            phoneNumber: 0
+                                            phoneNumber: ""
                                         }}
                                         validationSchema={validateSchema}
                                         onSubmit={(values) => {
@@ -92,49 +92,49 @@ function Register() {
                                             <div className="form-group">
                                                 <Field type="text" className="form-control-login " name={"username"}
                                                        placeholder="Username" required/>
-                                                <div className="text-danger">
-                                                    <ErrorMessage  name={"username"}></ErrorMessage>
+                                                <div className="text-light">
+                                                    <ErrorMessage name={"username"}></ErrorMessage>
                                                 </div>
                                             </div>
                                             <div className="form-group">
                                                 <Field type="text" className="form-control-login " name={"fullName"}
-                                                       placeholder="fullName" required/>
-                                                <alert className="text-danger">
+                                                       placeholder="Full Name" required/>
+                                                <alert className="text-light-">
                                                     <ErrorMessage name={"fullName"}></ErrorMessage>
                                                 </alert>
                                             </div>
                                             <div className="form-group">
                                                 <Field id="password-field" name={"password"} type="password"
                                                        className="form-control-login " placeholder="Password" required/>
-                                                <alert className="text-danger">
+                                                <alert className="text-light">
                                                     <ErrorMessage name={"password"}></ErrorMessage>
                                                 </alert>
 
                                             </div>
                                             <div className="form-group">
                                                 <Field id="password-field" name={"confirmPassword"} type="password"
-                                                       className="form-control-login " placeholder="confirmPassword" required/>
-                                                <alert className="text-danger">
+                                                       className="form-control-login " placeholder="Confirm Password" required/>
+                                                <alert className="text-light">
                                                     <ErrorMessage name={"confirmPassword"}></ErrorMessage>
                                                 </alert>
                                             </div>
                                             <div className="form-group">
                                                 <Field type="number" className="form-control-login " name={"phoneNumber"}
-                                                       placeholder="phoneNumber" required/>
-                                                <alert className="text-danger">
+                                                       placeholder="Phone Number" required/>
+                                                <alert className="text-light">
                                                     <ErrorMessage name={"phoneNumber"}></ErrorMessage>
                                                 </alert>
                                             </div>
                                             <div className="form-group">
                                                 <Field type="select" as="select" name="role"
                                                        className="form-control-login" placeholder="role" required>
-                                                    <option style={{color: "black"}} value={"user"}>user</option>
-                                                    <option style={{color: "black"}} value={"owner"}>owner</option>
+                                                    <option style={{color: "black"}} value={"user"}>User</option>
+                                                    <option style={{color: "black"}} value={"owner"}>Owner</option>
                                                 </Field>
                                             </div>
                                             <div className="form-group">
                                                 <button type="submit"
-                                                        className="form-control-login  btn btn-primary submit px-3">register
+                                                        className="form-control-login  btn btn-primary submit px-3">Register
                                                 </button>
                                             </div>
                                             <div className="form-group d-md-flex">
@@ -145,7 +145,7 @@ function Register() {
                                                     </label>
                                                 </div>
                                                 <div className="w-50 text-md-right">
-                                                    <a href="#" style={{color: '#fff'}}>Forgot Password</a>
+                                                    <a href="#" style={{color: '#fbceb5'}}>Forgot Password</a>
                                                 </div>
                                             </div>
                                         </Form>
@@ -156,7 +156,7 @@ function Register() {
                                         <a href="#" className="px-2 py-2 mr-md-1 rounded"><span
                                             className="ion-logo-facebook mr-2"></span> Google Login</a>
                                         <a href="/" className="px-2 py-2 ml-md-1 rounded"><span
-                                            className="ion-logo-twitter mr-2"></span>login</a>
+                                            className="ion-logo-twitter mr-2"></span>Login</a>
                                     </div>
                                 </div>
                             </div>
