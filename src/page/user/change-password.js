@@ -44,7 +44,7 @@ export default function ChangePasswordModal() {
     return (
         <div>
             <a className="dropdown-item" onClick={handleShow}>
-                <i className="fa-solid fa-key fa-spin" style={{color: "#82ec55"}}></i> Change Password
+                <i className="fa-solid fa-key fa-fade" style={{color: "#82ec55"}}></i>  Change Password
             </a>
 
             <Modal show={showModal} onHide={handleClose}>

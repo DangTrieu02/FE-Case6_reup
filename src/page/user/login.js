@@ -12,12 +12,12 @@ import axios from "axios";// import "../../../public/assets/css/login.css"
 
 const validateSchema = Yup.object().shape({
     username: Yup.string()
-        .min(6, "tài khoản cần dài từ 6 đến 32 kí tự")
-        .max(32, "tài khoản cần dài từ 6 đến 32 kí tự")
+        .min(6, "Needs to be between 6 and 12 characters long")
+        .max(32, "Needs to be between 6 and 12 characters long")
         .required("required"),
     password: Yup.string()
-        .min(6, "mật khẩu cần dài từ 6 đến 32 kí tự")
-        .max(32, "mật khẩu cần dài từ 6 đến 32 kí tự")
+        .min(6, "Needs to be between 6 and 12 characters long")
+        .max(32, "Needs to be between 6 and 12 characters long")
         .required("required")
 
 })
@@ -78,7 +78,7 @@ export default function Login() {
                         <div className="row justify-content-center">
                             <div className="col-md-6 col-lg-4">
                                 <div className="login-wrap p-0">
-                                    <h3 className="mb-4 text-center">Have an account?</h3>
+                                    <h3 className="mb-4 text-center">Have an account ?</h3>
                                     <Formik
                                         initialValues={{
                                             username: "",
@@ -92,13 +92,13 @@ export default function Login() {
                                     <Form action="#" className="signin-form">
                                         <div className="form-group">
                                             <Field type="text" className="form-control-login " name={"username"} placeholder="Username" required/>
-                                            <alert className="text-danger">
+                                            <alert className="text-light">
                                                 <ErrorMessage name={"username"}></ErrorMessage>
                                             </alert>
                                         </div>
                                         <div className="form-group">
                                             <Field id="password-field" name={"password"} type="password" className="form-control-login " placeholder="Password" required/>
-                                            <alert className="text-danger">
+                                            <alert className="text-light">
                                                 <ErrorMessage name={"password"}></ErrorMessage>
                                             </alert>
                                         </div>
@@ -113,17 +113,9 @@ export default function Login() {
                                                 </label>
                                             </div>
                                             <div className="w-50 text-md-right">
-                                                <a href="#" style={{color: '#fff'}}>Forgot Password</a>
+                                                <a href="#" style={{color: '#fbceb5'}}>Forgot Password</a>
                                             </div>
-                                            {/*<GoogleLogin*/}
-                                            {/*    clientId='884724746848-412afcr1b3pg39o206pj5rlha8driq78.apps.googleusercontent.com'*/}
-                                            {/*    onSuccess={async (res) => {*/}
-                                            {/*        loginGoogle(res)*/}
-                                            {/*    }}*/}
-                                            {/*    onError={(err) => console.log(err)}*/}
-                                            {/*    containerClass="<your_custom_class>"*/}
-                                            {/*>*/}
-                                            {/*</GoogleLogin>*/}
+
                                         </div>
                                     </Form>
                                     </Formik>
@@ -141,7 +133,7 @@ export default function Login() {
                                             > Google Login
                                             </GoogleLogin>
                                            </a>
-                                        <a href="/register" className="px-2 py-2 ml-md-1 rounded">register</a>
+                                        <a href="/register" className="px-2 py-2 ml-md-1 rounded">Register</a>
                                     </div>
                                 </div>
                             </div>
@@ -151,6 +143,4 @@ export default function Login() {
             </div>
         </>
     );
-
-
 }

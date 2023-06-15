@@ -3,13 +3,21 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import ChangePasswordModal from "../page/user/change-password";
 import {useNavigate} from "react-router-dom";
-
-
+import {useSelector} from "react-redux";
+import ProfileModal from "../page/user/info";
+import {useState} from 'react';
+import {Modal} from "react-bootstrap"
 export default function Navbar() {
+
+
     const navigate = useNavigate() ;
+    const user = useSelector((users)=> users.user.currentUser)
+    const [openModal, setOpenModal] = useState(false);
+    const [repositories, setRepositories] = useState()
 
     return (
         <div>
+            {console.log(user)}
             <nav className="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
                 <div className="container">
                     <button
@@ -99,34 +107,41 @@ export default function Navbar() {
                         <i className="bi bi-search"></i>
                     </button>
 
-                        {/*<ChangePasswordModal></ChangePasswordModal>*/}
+                    {/*<ChangePasswordModal></ChangePasswordModal>*/}
 
                     <div className="nav-item dropdown">
-                         <a
-                             className="nav-link dropdown-toggle"
-                             href="#"
-                             id="navbarDropdown"
-                             role="button"
-                             data-bs-toggle="dropdown"
-                             aria-haspopup="true"
-                             aria-expanded="false"
-                         >
-                            Info
+                        <a
+                            className="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            <img src= {user.avatar}
+                                 className="rounded-circle"
+                                 height="40" width="40" style={{objectFit:"cover"}} alt="Avatar"/>
+                            {/*{user.fullName}*/}
                         </a>
                         <div className="dropdown-menu">
-                            <a className="dropdown-item" href="property-single.html">
-                                <i className="fa-regular fa-address-card fa-shake" style={{color: '#0ad62c'}}></i>   profile
+                            <a className="dropdown-item">
+                                <li>
+                                    <div>
+                                        <Modal
+                                            open={openModal}
+                                            onClose={() => setOpenModal(false)}/>
+                                        <ProfileModal/>
+                                    </div>
+                                </li>
                             </a>
-                             <ChangePasswordModal></ChangePasswordModal>
+                            <ChangePasswordModal></ChangePasswordModal>
 
-                            <a className="dropdown-item" href=""
-
-                               onClick={()=>{
-                                localStorage.removeItem("access_token");
+                            <a className="dropdown-item" href="" onClick={()=>{
                                 localStorage.clear()
                                 navigate("/")
                             }}>
-                                <i className="fa-solid fa-person-walking-dashed-line-arrow-right fa-fade" style={{color: '#0ad62c'}}></i> Log out
+                                <i className="fa-solid fa-person-walking-dashed-line-arrow-right fa-fade" style={{color: '#4cd51a'}}></i>  Log out
                             </a>
                         </div>
                     </div>

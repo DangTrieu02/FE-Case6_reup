@@ -8,6 +8,7 @@ import HomeOwner from "./page/owner/homeOwner";
 import Register from "./page/user/register";
 import EditProfile from "./page/editProfile";
 import { useSelector } from "react-redux";
+import ProfileModal from "./page/user/info";
 function App() {
 
   let user = useSelector(({ user }) => {
@@ -23,9 +24,10 @@ function App() {
         <>
           <Route path="owner" element={<HomeOwner />} />
           <Route path="" element={<HomePage />}>
-            <Route path="home" element={<Main />} />
+              <Route path="home" element={<Main />} />
             <Route path="/change-password" element={<ChangePassword />} />
           </Route>
+
         </>
       ) : (
         <Route path="*" element={<Login />} />
